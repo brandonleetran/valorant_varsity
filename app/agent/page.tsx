@@ -15,7 +15,7 @@ export default async function AgentPage() {
         <div>
             <h1>All Agents</h1>
             {agents.data.map((agent : any) => 
-                <li>{agent.displayName}</li>
+                <li key={agent.uuid}>{agent.displayName}</li>
             )}
         </div>
     )
