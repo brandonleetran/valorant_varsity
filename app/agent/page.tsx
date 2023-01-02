@@ -1,5 +1,5 @@
 async function getAgents() {
-    const res = await fetch('https://valorant-api.com/v1/agents');
+    const res = await fetch('http://localhost:3000/api/agent');
 
     if (!res.ok) {
         throw new Error('Failed to fetch agents.');
@@ -15,7 +15,7 @@ export default async function AgentPage() {
         <div>
             <h1>All Agents</h1>
             {agents.data.map((agent : any) => 
-                <li key={agent.uuid}>{agent.displayName}</li>
+                <li key={agent.uuid}>{agent.agentName} has an id of {agent.uuid}</li>
             )}
         </div>
     )
