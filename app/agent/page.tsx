@@ -1,5 +1,5 @@
 async function getAgents() {
-    const res = await fetch('http://localhost:3000/api/agent');
+    const res = await fetch(process.env.AGENT_ENDPOINT as string);
 
     if (!res.ok) {
         throw new Error('Failed to fetch agents.');
@@ -15,7 +15,10 @@ export default async function AgentPage() {
         <div>
             <h1>All Agents</h1>
             {agents.data.map((agent : any) => 
-                <li key={agent.uuid}>{agent.agentName} has an id of {agent.uuid}</li>
+                <div>
+                    <li key={agent.uuid}>{agent.displayName} has an id of {agent.uuid} with the display icon:</li>
+                    <img src={agent.displayIcon}></img>
+                </div>
             )}
         </div>
     )
